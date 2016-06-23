@@ -20,14 +20,12 @@ var AnnotatorSchema = mongoose.Schema({
   beta: {
       type: Number,
       default: 1
+  },
+  ignore: {
+      type: Array,
+      default: []
   }
 })
-
-AnnotatorSchema.statics.findBySecret = function(secret, callback) {
-  return this.model('annotators').findOne({
-    'secret': secret
-  }, callback)
-}
 
 AnnotatorSchema.statics.findById = function(id, callback) {
   return this.model('annotators').findOne({

@@ -35,6 +35,7 @@ require('./routing/adminroutes.js')(app)
 
 // MongoDB Setup
 mongoose.connect('mongodb://localhost:27017/judging')
+mongoose.Promise = require('bluebird').Promise;
 
 // Main Init
 var server = app.listen(3000 , function () {

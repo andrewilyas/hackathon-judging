@@ -1,19 +1,5 @@
-var controller = require('../controllers/controller')
-var Annotator = require('../models/annotators')
+/*var Annotator = require('../models/annotators')
 var Decision = require('../models/decision')
-
-var auth = function (req, res, next) {
-    function unauthorized(res) {
-        res.set('WWW-Authenticate', 'Basic realm=Authorization Required');
-        return res.send(401);
-    };
-    var user = req.session.annotator_id
-    if (!user) {
-        return unauthorized(res);
-    } else {
-        return next();
-    }
-};
 
 var get_current_annotator = function (session) {
 	return Annotator.findOne({'_id': session.annotator_id});
@@ -53,18 +39,17 @@ module.exports = function(app) {
     });
 
     app.post('/begin', function (req, res) {
-        get_current_annotator(req.session).then(function(annotator) {
-            console.log(annotator);
-            if (annotator && annotator.next_id === req.body.item_id) {
-                annotator.ignore.push(annotator.next_id)
-                if (req.body.action === 'Done') {
-                    annotator.prev_id = annotator.next_id
-                } else if (req.body.action === 'Skip') {
-                    annotator.next = ""
-                }
-                Annotator.findOneAndUpdate({'_id': annotator.id}, annotator).exec();
+        var annotator = get_current_annotator(req.session)
+        if (annotator && annotator.next_id == request.body.item_id) {
+            annotator.ignore.push(annotator.next_id)
+            if (req.body.action === 'Done') {
+                annotator.prev = annotator.next
+                annotator.next = choose_next(annotator)
+            } else if (req.body.action === 'Skip') {
+                annotator.next = ""
             }
-            res.redirect('/')
-        })
+            annotator.save().exec();
+        }
+        res.redirect('/')
     });
-}
+}*/

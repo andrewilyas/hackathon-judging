@@ -1,0 +1,8 @@
+{% extends "layout.html" %}
+{% block content %}
+<p class="instructions">Head to <strong>{{ item.location }}</strong> to judge <strong>"{{ item.name }}"</strong>. Once you arrive, ask for the team's PIN, and enter it here:</p>
+<form action="/decode" method="post" enctype="multipart/form-data">
+    <input type="number" name="pin" class="pincode" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+    <input type="submit" id="submit" class="ui green button">
+</form>
+{% endblock %}

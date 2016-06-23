@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+{% block content %}
+<div id="project-submit">
+    <center>
+        <h1>Project Submission</h1> <br />
+    </center>
+    <form class="ui form submit" action="/submit_proj" method="post"  style="background-color: #EEE; color: #000;">
+        <h2>Project Details</h3>
+        <div class="field">
+            <label>Project Name</label>
+            <input name="name" class="form-control" type="text" placeholder="Name"> <br />
+        </div>
+        <div class="field">
+            <label>Project Location</label>
+            <input name="loc" class="form-control" type="text" placeholder="Room Number and Seat Location (eg. 123 F14)"><br />
+        </div>
+        <div class="field">
+            <label>Project Description</label>
+            <textarea name="description" class="form-control description" placeholder="Description"></textarea>
+        </div>
+        <div class="field">
+            <label>Upload a Screenshot: Upload a picture of your hack to be displayed after the event!</label>
+            <p style="font-size: 15px;"><a href="">Upload your screenshot here</a>: You should upload a single JPG or PNG image entitled [Project Name].jpg or [Project Name].png (replace [Project Name] with your actual project name).</p>
+        </div>
+        <h2>Team Contact</h2>
+        <div class="three fields">
+            <div class="required field">
+                <label>Name</label>
+                <input name="contact_name" class="form-control" type="text" placeholder="Member #1 Name"> <br />
+            </div>
+            <div class="required field">
+                <label>Email</label>
+                <input name="email" class="form-control" type="text" placeholder="Member #1 Email"> <br />
+            </div>
+            <div class="required field">
+                <label>Phone Number</label>
+                <input name="phone" class="form-control" type="text" placeholder="Member #1 Phone"> <br />
+            </div>
+        </div>
+        <h2>Other Members</h2>
+        <div class="field">
+            <input name="oname1" class="form-control" type="text" placeholder="Member #2 Name"> <br />
+        </div>
+        <div class="field">
+            <input name="oname2" class="form-control" type="text" placeholder="Member #3 Name"> <br />
+        </div>
+        <div class="field">
+            <input name="oname3" class="form-control" type="text" placeholder="Member #4 Name"> <br />
+        </div>
+        <div class="field">
+            <input type="submit" class="ui green button" id="submit">
+        </div>
+    </form>
+</div>
+{% endblock %}

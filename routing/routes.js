@@ -21,11 +21,10 @@ module.exports = function(app) {
             sess.modified = true
 		} else {
             sess.annotators['annotator_id'] = annotator.id
-            console.log('login failed')
         }
         res.redirect('/')
 	})
-    
+
     app.get('/profile', function(req, res) {
         res.render('profile.ejs', {user: req.user, errorMessage: req.flash('error'), title: "My Profile"})
     })

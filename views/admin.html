@@ -8,8 +8,6 @@
 <h3>Items</h3>
 <table>
     <tr>
-        <td>Unique ID</td>
-        <td>PIN</td>
         <td>Id</td>
         <td>Name</td>
         <td>Location</td>
@@ -21,15 +19,13 @@
     </tr>
     {% for item in items %}
     <tr>
-        <td>{{ item.uid | safe }}</td>
-        <td>{{ item.pincode | safe }}</td>
         <td>{{ item.id | safe }}</td>
-        <td>{{ item.name | safe }}</td>
+        <td>{{ item.title | safe }}</td>
         <td>{{ item.location | safe }}</td>
         <td>{{ item.description | safe }}</td>
         <td>{{ item.mu | safe }}</td>
         <td>{{ item.sigma_sq | safe }}</td>
-        <td>{{ item_counts.get(item.id, 0) }}</td>
+        <td>{{ item_counts[item.id]}}</td>
         <td>
             <form action="/admin/item" method="post">
                 <input type="submit" name="action" value="Delete" />
@@ -45,7 +41,6 @@
     <tr>
         <td>Name</td>
         <td>Email</td>
-        <td>Description</td>
         <td>Secret</td>
         <td>Votes</td>
         <td>Next (Id)</td>
@@ -58,9 +53,8 @@
     <tr>
         <td>{{ annotator.name | safe }}</td>
         <td>{{ annotator.email | safe }}</td>
-        <td>{{ annotator.description | safe }}</td>
         <td>{{ annotator.secret | safe }}</td>
-        <td>{{ counts.get(annotator.id, 0) | safe }}</td>
+        <td>{{ counts[annotator.id] | safe }}</td>
         <td>{{ annotator.next_id | safe }}</td>
         <td>{{ annotator.prev_id | safe }}</td>
         <td>{{ annotator.alpha | safe }}</td>

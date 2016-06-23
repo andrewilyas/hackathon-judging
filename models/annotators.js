@@ -8,7 +8,7 @@ var AnnotatorSchema = mongoose.Schema({
   next_id: {
       type: String,
       default: ''
-  }
+  },
   prev_id: {
       type: String,
       default: ''

@@ -31,11 +31,9 @@ var performVote = function(annotator, nextWon) {
         loser_id = annotator.next_id
     }
     Promise.all([Project.findById(winner_id), Project.findById(loser_id)]).then(function(x) {
-        console.log(x);
         var loser = x[1],
             winner = x[0];
         res = CrowdBT.update(annotator.alpha, annotator.beta, winner.mu, winner.sigma_sq, loser.mu, loser.sigma_sq);
-        console.log(res);
         annotator.alpha = res[0]
         annotator.beta = res[1]
         winner.mu = res[2]
@@ -73,28 +71,26 @@ module.exports = function(app) {
                     annotator.prev_id = annotator.next_id
                     annotator.ignore.push(annotator.prev_id)
                 }
-                annotator.save().then(function(an){});
-                res.redirect('/');
+                annotator.save().then(function(an){
+                    res.redirect('/');
+                });
             }
         })
     });
 
     app.post('/begin', function (req, res) {
         get_current_annotator(req.session).then(function(annotator) {
-            console.log(req.body.item_id);
-            console.log(annotator.next_id);
             if (annotator.next_id === req.body.item_id) {
-                console.log("HERE");
                 annotator.ignore.push(annotator.next_id)
                 if (req.body.action === 'Done') {
                     annotator.prev_id = annotator.next_id
-                    console.log(annotator)
                 } else if (req.body.action === 'Skip') {
-                    annotator.next = ""
+                    annotator.next_id = ""
                 }
-                Annotator.findOneAndUpdate({'_id': annotator.id}, annotator).exec();
+                return Annotator.findOneAndUpdate({'_id': annotator.id}, annotator);
             }
-            res.redirect('/')
+        }).then(function(annotator) {
+            res.redirect('/');
         })
     });
 }

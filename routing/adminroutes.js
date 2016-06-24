@@ -81,7 +81,6 @@ module.exports = function(app) {
                 item_counts[w] = item_counts[w] + 1 || 1
                 item_counts[l] = item_counts[l] + 1 || 1
             }
-            console.log(annotators)
             res.render('admin.html', {items: items, annotators: annotators, counts: counts, item_counts: item_counts, votes: decisions.length})
         });
     });

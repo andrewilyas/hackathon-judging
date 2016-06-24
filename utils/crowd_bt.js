@@ -31,7 +31,7 @@ exports.argmax = function(f, xs) {
             curr_max_index = i;
         }
     }
-    return curr_max_index;
+    return xs[curr_max_index];
 }
 
 // via https://en.wikipedia.org/wiki/Normal_distribution

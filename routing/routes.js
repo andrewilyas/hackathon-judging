@@ -25,7 +25,9 @@ var addNextProject = function (annotator) {
 		} else {
 			next_proj = null;
 		}
+		if (!next_proj) next_proj = {id: ""}
 		annotator.next_id = next_proj.id;
+		console.log(next_proj)
 		return Annotator.findOneAndUpdate({'_id': annotator.id}, annotator, {new: true});
 	});
 }
@@ -59,7 +61,6 @@ module.exports = function(app) {
 						return Project.findOne({'_id': annotator.prev_id})
 					}).then(function(proj) {
 						prev = proj
-						console.log(prev);
 						res.render('vote.html', {prev: prev, next: next})
 					})
 				}

@@ -1,19 +1,19 @@
 {% extends "layout.html" %}
 {% block content %}
-<h1>Previous ({{ prev.name | safe }})</h1>
+<h1>Previous ({{ prev.title | safe }})</h1>
 <p><strong>Name: </strong></p>
 <p><strong>Location: </strong>{{ prev.location | safe }}</p>
 <p><strong>Description: </strong>{{ prev.description | safe }}</p>
 
-<h1>Current ({{ next.name | safe }})</h1>
+<h1>Current ({{ next.title | safe }})</h1>
 <p><strong>Location: </strong>{{ next.location | safe }}</p>
 <p><strong>Description: </strong>{{ next.description | safe }}</p>
 
 <h1>Vote</h1>
 <p>Which is better?
 <form action="/vote" method="post">
-    <input class="ui green button" type="submit" name="action" value="Previous ({{ prev.name | safe }})" id="submit"/>
-    <input class="ui green button" type="submit" name="action" value="Current ({{ next.name | safe }})"  id="submit"/>
+    <input class="ui green button" type="submit" name="action" value="Previous ({{ prev.title | safe }})" id="submit"/>
+    <input class="ui green button" type="submit" name="action" value="Current ({{ next.title | safe }})"  id="submit"/>
     <input class="ui yellow button" type="submit" name="action" value="Skip" id ="submit" />
     <input class="ui button" type="hidden" name="prev_id" value="{{ prev.id }}" />
     <input class="ui button" type="hidden" name="next_id" value="{{ next.id }}" />

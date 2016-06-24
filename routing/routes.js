@@ -1,6 +1,7 @@
 // Main page Routes
 var Annotator = require('../models/annotators')
 var Project = require('../models/project')
+var CrowdBT = require('../utils/crowd_bt')
 
 var get_current_annotator = function (session) {
 	return Annotator.findOne({'_id': session.annotator_id});
@@ -8,9 +9,24 @@ var get_current_annotator = function (session) {
 
 var addNextProject = function (annotator) {
 	var unignoredProject = { '_id': { '$nin': annotator.ignore }}
-	return Project.findOne(unignoredProject).then( function (proj) {
-		annotator['next_id'] = proj.id;
-		return Annotator.findOneAndUpdate({'_id': annotator.id}, annotator);
+	var f;
+	return CrowdBT.expectedInfoGainFunction(annotator).then(function (_f) {
+		f = _f;
+		return Project.find(unignoredProject);
+	}).then( function (projects) {
+		CrowdBT.shuffle(projects);
+		var next_proj;
+		if(projects && projects.length > 0) {
+			if (annotator.prev_id === "" || Math.random() < 0.25) {
+				next_proj = projects[0];
+			} else {
+				next_proj = CrowdBT.argmax(f, projects)
+			}
+		} else {
+			next_proj = null;
+		}
+		annotator.next_id = next_proj.id;
+		return Annotator.findOneAndUpdate({'_id': annotator.id}, annotator, {new: true});
 	});
 }
 
@@ -38,11 +54,12 @@ module.exports = function(app) {
 					})
 				} else {
 					var prev, next;
-					Project.findOne({id: annotator.next_id}).then(function(proj) {
+					Project.findOne({'_id': annotator.next_id}).then(function(proj) {
 						next = proj
-						return Project.findOne({id: annotator.prev_id})
+						return Project.findOne({'_id': annotator.prev_id})
 					}).then(function(proj) {
 						prev = proj
+						console.log(prev);
 						res.render('vote.html', {prev: prev, next: next})
 					})
 				}

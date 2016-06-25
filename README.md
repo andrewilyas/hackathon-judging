@@ -9,7 +9,7 @@ The first implementation of the algorithm was functional, but was written in Fla
 - Make sure you have NodeJS, MongoDB, and LESS installed
 - Run mongod (start a MongoDB server)
 - Then:
-    npm install
+    npm install, then
     node server.js
 - You should be good to go!
 

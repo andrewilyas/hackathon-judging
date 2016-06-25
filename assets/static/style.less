@@ -1,0 +1,121 @@
+@background: #0B3B4B;
+@primary-button: #FC5454;
+@primary-hover: #FFBC29;
+@secondary-button: #0B3B4B;
+@secondary-hover: #C9D41B;
+@text: #FFF;
+
+html {
+    font-size: 62.5%;
+
+    body {
+        background-color: @background;
+        color: @text !important;
+    }
+}
+
+#content {
+    padding: 1.5rem;
+    width: 100%;
+}
+
+p.instructions {
+    font-size:30px;
+}
+
+table {
+    border: 0.1rem solid black;
+    border-collapse: collapse;
+
+    tr {
+        border: 0.1rem solid black;
+    }
+
+    td {
+        border: 0.1rem solid black;
+        padding: 1.5rem;
+    }
+}
+
+textarea {
+    width: 100%;
+}
+
+input[type="text"], textarea.description  {
+    margin-top: 10px;
+    padding-top: 10px;
+    color: #000;
+}
+
+.input-group {
+    width: 70%;
+    margin-right: 15%;
+    margin-left: 15%;
+}
+
+#submit {
+    height: 50px;
+    font-size: 20px;
+    width: 76%;
+    margin-left: 12%;
+    margin-top: 20px;
+}
+
+#project-submit h1{
+    font-size: 40px;
+}
+
+form.submit .btn {
+    margin-top: 20px;
+    width: 70%;
+}
+
+form.submit {
+    border: #FFD946 solid 4px;
+    width: 70%;
+    margin-left: 15%;
+    margin-right: 15%;
+    padding: 20px;
+    padding-bottom: 50px;
+}
+
+input[type="text"] {
+    box-shadow: none;
+    border: none;
+    border-radius: 6px;
+    color: #000;
+}
+
+textarea, input[type="number"] {
+    color: #000 !important;
+}
+
+.ui.button {
+    border: 1px solid @text;
+
+    &.primary {
+        background-color: @primary-button;
+
+        &:hover {
+            background-color: @primary-hover;
+        }
+    }
+
+    &.secondary {
+        background-color: @secondary-button;
+
+        &:hover {
+            background-color: @secondary-hover;
+        }
+    }
+}
+
+#helplink {
+    display:block;
+    text-decoration: underline;
+    color: white;
+    font-size: 15px;
+    margin-top: 20px;
+    width: 100%;
+    text-align:center;
+}

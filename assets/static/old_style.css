@@ -1,0 +1,104 @@
+html {
+    font-size: 62.5%;
+}
+
+#content {
+    padding: 1.5rem;
+    width: 100%;
+}
+
+p.instructions {
+    font-size:30px;
+}
+
+input.pincode {
+    margin-right: 15%;
+    margin-left: 15%;
+    font-size: 50px;
+    width: 70%;
+    text-align: center;
+}
+
+table, tr, td {
+    border: 0.1rem solid black;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+td {
+    padding: 1.5rem;
+}
+
+textarea {
+    width: 100%;
+}
+
+input[type="text"], textarea.description  {
+    margin-top: 10px;
+    padding-top: 10px;
+    color: #000;
+}
+
+.input-group {
+    width: 70%;
+    margin-right: 15%;
+    margin-left: 15%;
+}
+
+#submit {
+    height: 50px;
+    font-size: 20px;
+    width: 76%;
+    margin-left: 12%;
+    margin-top: 20px;
+}
+
+#project-submit h1{
+    font-size: 40px;
+}
+
+form.submit .btn {
+    margin-top: 20px;
+    width: 70%;
+}
+
+form.submit {
+    border: #FFD946 solid 4px;
+    width: 70%;
+    margin-left: 15%;
+    margin-right: 15%;
+    padding: 20px;
+    padding-bottom: 50px;
+}
+
+input[type="text"] {
+    box-shadow: none;
+    border: none;
+    border-radius: 6px;
+    color: #000;
+}
+
+textarea, input[type="number"] {
+    color: #000 !important;
+}
+
+.ui.green.button {
+    background-color: #063B54;
+}
+
+body {
+    background-color: #0E95D4;
+    color: #FFF !important;
+}
+
+#helplink {
+    display:block;
+    text-decoration: underline;
+    color: white;
+    font-size: 15px;
+    margin-top: 20px;
+    width: 100%;
+    text-align:center;
+}

@@ -12,9 +12,9 @@
 <h1>Vote</h1>
 <p>Which is better?
 <form action="/vote" method="post">
-    <input class="ui green button" type="submit" name="action" value="Previous ({{ prev.title | safe }})" id="submit"/>
-    <input class="ui green button" type="submit" name="action" value="Current ({{ next.title | safe }})"  id="submit"/>
-    <input class="ui yellow button" type="submit" name="action" value="Skip" id ="submit" />
+    <input class="ui primary button" type="submit" name="action" value="Previous ({{ prev.title | safe }})" id="submit"/>
+    <input class="ui primary button" type="submit" name="action" value="Current ({{ next.title | safe }})"  id="submit"/>
+    <input class="ui secondary button" type="submit" name="action" value="Skip" id ="submit" />
     <input class="ui button" type="hidden" name="prev_id" value="{{ prev.id }}" />
     <input class="ui button" type="hidden" name="next_id" value="{{ next.id }}" />
 </form>

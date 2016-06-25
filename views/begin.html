@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 {% block content %}
-<p class="instructions"><strong>Name: </strong>{{ item.name | safe }}</p>
+<p class="instructions"><strong>Name: </strong>{{ item.title | safe }}</p>
 <p class="instructions"><strong>Location: </strong>{{ item.location | safe }}</p>
 <p class="instructions"><strong>Description: </strong>{{ item.description | safe }}</p>
 <form action="/begin" method="post">

@@ -82,14 +82,15 @@ module.exports = function(app) {
         get_current_annotator(req.session).then(function(annotator) {
             if (annotator.next_id === req.body.item_id) {
                 annotator.ignore.push(annotator.next_id)
-                if (req.body.action === 'Done') {
+                if (req.body.action === 'Next') {
                     annotator.prev_id = annotator.next_id
                 } else if (req.body.action === 'Skip') {
                     annotator.next_id = ""
                 }
-                return Annotator.findOneAndUpdate({'_id': annotator.id}, annotator);
+                return Annotator.findOneAndUpdate({'_id': annotator._id}, annotator, {'new': true});
             }
         }).then(function(annotator) {
+            console.log(annotator)
             res.redirect('/');
         })
     });
